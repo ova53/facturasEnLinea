@@ -71,6 +71,7 @@
       $user = $userRepository->findOneBy(["email"=>$email]);
 
     if (!$user) {
+            // dd($request);
         return $this->json([
             "Error" => true,
             "message" => "Usuario no existe",
