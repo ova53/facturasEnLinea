@@ -80,7 +80,6 @@
         $email = $login2[0];
         $password = $login2[1];
         $user = $this->userRepository->findOneBy(["email" => $email]);
-        dd($user);
 
     if (!$user) {
         return $this->json([
