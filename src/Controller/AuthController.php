@@ -70,9 +70,9 @@
     {
         $headers = $request->headers->get('Authorization');
         $login = explode(" ", ($headers));
-      $userAndPassword = (base64_decode($login[1]));
-        dd($userAndPassword);
+        $userAndPassword = (base64_decode($login[1]));
       $login2 = explode(":", $userAndPassword);
+        dd($login2);
       $email = $login2[0];
       $password = $login2[1];
         $user = $userRepository->findOneBy(["email" => $email]);
