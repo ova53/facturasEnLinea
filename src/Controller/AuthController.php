@@ -69,9 +69,9 @@
                                JWTTokenManagerInterface $JWTManager)
     {
         $headers = $request->headers->get('Authorization');
-      $login = explode(" ", ($headers));
-        dd($login);
+        $login = explode(" ", ($headers));
       $userAndPassword = (base64_decode($login[1]));
+        dd($userAndPassword);
       $login2 = explode(":", $userAndPassword);
       $email = $login2[0];
       $password = $login2[1];
