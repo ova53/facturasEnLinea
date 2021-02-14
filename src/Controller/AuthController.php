@@ -32,7 +32,7 @@
         $em = $this->getDoctrine()->getManager();
         $email = $request->get('email');
         $password = $request->get('password');
-        dd($request);
+        // dd($request);
    if ( empty($password) || empty($email)){
     return $this->json([
         "Error" => true,
