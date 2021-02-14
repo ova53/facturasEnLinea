@@ -74,7 +74,7 @@
         $login2 = explode(":", $userAndPassword);
         $email = $login2[0];
         $password = $login2[1];
-        dd($userRepository);
+        dd($email);
         $user = $userRepository->findOneBy(["email" => $email]);
 
     if (!$user) {
