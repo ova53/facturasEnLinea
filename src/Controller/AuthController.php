@@ -23,13 +23,16 @@
 
  class AuthController extends AbstractController
  {
-    #[Route('/register', name: 'register')]
+    // #[Route('/register', name: 'register')]
+    /**
+     * @Route("/register", name="register")
+     */
     public function register(Request $request, UserPasswordEncoderInterface $encoder)
     {
         $em = $this->getDoctrine()->getManager();
         $email = $request->get('email');
         $password = $request->get('password');
-        // dd($password);
+        dd($request);
    if ( empty($password) || empty($email)){
     return $this->json([
         "Error" => true,
@@ -56,7 +59,10 @@
    * @param JWTTokenManagerInterface $JWTManager
    * @return JsonResponse
    */
-  #[Route('/api/login', name: 'login')]
+    //   #[Route('/api/login', name: 'login')]
+    /**
+     * @Route("/api/login", name="login")
+     */
   public function getTokenUser(Request $request, 
                                UserRepository $userRepository, 
                                EncoderFactoryInterface $factory, 

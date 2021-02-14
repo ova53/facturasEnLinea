@@ -11,7 +11,10 @@ class FacturasController extends AbstractController
 {
 
     // Servicio de consulta facturas
-    #[Route('/api/facturas', name: 'facturas')]
+    // #[Route('/api/facturas', name: 'facturas')]
+    /**
+     * @Route("/api/facturas", name="facturas")
+     */
     public function index(FacturaRepository $facturaRepository): Response
     {
         // Recibo el parametro de consulta por get
@@ -46,11 +49,14 @@ class FacturasController extends AbstractController
             'Error' => false,
             'message' => 'Factura no encontrada',
         ], 206);
-    } 
+    }
 
 
 
-    #[Route('/api/confirmation', name: 'confirmation')]
+    // #[Route('/api/confirmation', name: 'confirmation')]
+    /**
+     * @Route("/api/confirmation", name="confirmation")
+     */
     public function confirmation(FacturaRepository $facturaRepository): Response
     {
         $em = $this->getDoctrine()->getManager();
