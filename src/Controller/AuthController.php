@@ -23,6 +23,11 @@
 
  class AuthController extends AbstractController
  {
+    private $usersRepository;
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
     // #[Route('/register', name: 'register')]
     /**
      * @Route("/register", name="register")
@@ -63,8 +68,8 @@
     /**
      * @Route("/login", name="login")
      */
-  public function getTokenUser(Request $request, 
-                               UserRepository $userRepository, 
+    public function getTokenUser(
+        Request $request, 
                                EncoderFactoryInterface $factory, 
                                JWTTokenManagerInterface $JWTManager)
     {
@@ -74,8 +79,7 @@
         $login2 = explode(":", $userAndPassword);
         $email = $login2[0];
         $password = $login2[1];
-        dd($email);
-        $user = $userRepository->findOneBy(["email" => $email]);
+        $user = $this->userRepository->findOneBy(["email" => $email]);
 
     if (!$user) {
         return $this->json([
