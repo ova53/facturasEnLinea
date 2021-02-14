@@ -61,7 +61,7 @@
    */
     //   #[Route('/api/login', name: 'login')]
     /**
-     * @Route("/api/login", name="login")
+     * @Route("/login", name="login")
      */
   public function getTokenUser(Request $request, 
                                UserRepository $userRepository, 
