@@ -68,9 +68,9 @@
                                EncoderFactoryInterface $factory, 
                                JWTTokenManagerInterface $JWTManager)
     {
-      $headers = $request->headers->get('Authorization');
-        dd($headers);
-      $login = explode(" ", ($headers));  
+        $headers = $request->headers->get('Authorization');
+      $login = explode(" ", ($headers));
+        dd($login);
       $userAndPassword = (base64_decode($login[1]));
       $login2 = explode(":", $userAndPassword);
       $email = $login2[0];
