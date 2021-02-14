@@ -68,17 +68,16 @@
                                EncoderFactoryInterface $factory, 
                                JWTTokenManagerInterface $JWTManager)
   {
+        dd($request);
       $headers = $request->headers->get('Authorization');
       $login = explode(" ", ($headers));  
       $userAndPassword = (base64_decode($login[1]));
       $login2 = explode(":", $userAndPassword);
       $email = $login2[0];
       $password = $login2[1];
-      $user = $userRepository->findOneBy(["email"=>$email]);
-        dd($login2);
+        $user = $userRepository->findOneBy(["email" => $email]);
 
-    if (!$user) {
-            // dd($request);
+        if (!$user) {
         return $this->json([
             "Error" => true,
             "message" => "Usuario no existe",
