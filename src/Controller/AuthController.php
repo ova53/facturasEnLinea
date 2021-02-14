@@ -67,9 +67,9 @@
                                UserRepository $userRepository, 
                                EncoderFactoryInterface $factory, 
                                JWTTokenManagerInterface $JWTManager)
-  {
-        dd($request);
+    {
       $headers = $request->headers->get('Authorization');
+        dd($headers);
       $login = explode(" ", ($headers));  
       $userAndPassword = (base64_decode($login[1]));
       $login2 = explode(":", $userAndPassword);
@@ -77,7 +77,7 @@
       $password = $login2[1];
         $user = $userRepository->findOneBy(["email" => $email]);
 
-        if (!$user) {
+    if (!$user) {
         return $this->json([
             "Error" => true,
             "message" => "Usuario no existe",
