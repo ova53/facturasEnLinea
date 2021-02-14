@@ -41,6 +41,7 @@ class FacturasController extends AbstractController
                 ]
                 ], 200);
         }
+        // Mensaje retornado cuando no se envia factura en el parametro
         return $this->json([
             'Error' => false,
             'message' => 'Factura no encontrada',
