@@ -18,11 +18,22 @@ class FacturasController extends AbstractController
     public function index(FacturaRepository $facturaRepository): Response
     {
         // Recibo el parametro de consulta por get
-        $resourceType = $_REQUEST['num_doc'];
-        $factura = $facturaRepository->findOneby(["numDoc"=>$resourceType]);
-        
-        // Valido que el parametro exista en base de datos 
-        if($factura) {
+        // $resourceType = $_REQUEST['num_doc'];
+
+        $resourceType = $_GET['num_doc'] ? $_GET['num_doc'] : null;
+
+        // validación de consulta 
+        if (isset($resourceType)) {
+            // Valido que el parametro exista en base de datos 
+            $factura = $facturaRepository->findOneby(["numDoc" => $resourceType]);
+            $numDoc = $factura->getNumDoc();
+            // dd($_REQUEST);
+            if (isset($numDoc)) {
+                return $this->json([
+                    'Error' => false,
+                    'message' => 'Factura no encontrada',
+                ], 206);
+            }
             // Valido si la factura ya esta paga
             if($factura->getAutorization() != null) {
                 return $this->json([
@@ -47,9 +58,9 @@ class FacturasController extends AbstractController
         // Mensaje retornado cuando no se envia factura en el parametro
         return $this->json([
             'Error' => false,
-            'message' => 'Factura no encontrada',
-        ], 206);
-    }
+            'message' => '0k',
+        ], 200);
+    } 
 
 
 
