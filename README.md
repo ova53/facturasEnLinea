@@ -2,7 +2,9 @@
 Proyecto de recuado en linea ePayco
 
 En el siguiente boton podra descargar la colección de postman 
-para el consumo del servicio <div class="postman-run-button"
+para el consumo del servicio
+
+<div class="postman-run-button"
 data-postman-action="collection/import"
 data-postman-var-1="a56ad7829170508271e0"></div>
 <script type="text/javascript">
